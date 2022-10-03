@@ -50,7 +50,7 @@ export const transformSVG = async (options: Record<string, any>) => {
     }
 
     .author {
-      font: 16px sans-serif;
+      font: 14px sans-serif;
     }
 
     .bookmark-bg {
@@ -82,7 +82,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   </g>
 
   <!-- Render the Title -->
-  <foreignObject width="444" height="24" x="16" y="240">
+  <foreignObject width="444" height="24" x="16" y="272">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="title truncate">
         ${metadata.title}
@@ -91,7 +91,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   </foreignObject>
 
   <!-- Render the Description -->
-  <foreignObject width="444" height="48" x="16" y="280">
+  <foreignObject width="444" height="48" x="16" y="300">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="desc">
         ${metadata.description}
@@ -100,7 +100,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   </foreignObject>
 
   <!-- Render the Author/Publisher -->
-  <foreignObject width="444" height="48" x="40" y="344">
+  <foreignObject width="444" height="48" x="40" y="346">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="author truncate">
         ${metadata.author || metadata.publisher}
@@ -109,7 +109,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   </foreignObject>
 
   <!-- Render the image -->
-  <path d="M0 12C0 5.37259 5.37258 0 12 0H468C474.627 0 480 5.37258 480 12V223H0V12Z" fill="url(#metadata_image_pattern)" />
+  <path d="M0 12C0 5.37258 5.37258 0 12 0H468C474.627 0 480 5.37258 480 12V256H0V12Z" fill="url(#metadata_image_pattern)" />
 
   <!-- Render the logo -->
   <rect x="16" y="348" width="16" height="16" fill="url(#metadata_logo_pattern)" />
@@ -146,7 +146,7 @@ export const transformSVG = async (options: Record<string, any>) => {
 
     <!-- picture pattern -->
     <pattern id="metadata_image_pattern" patternContentUnits="objectBoundingBox" width="1" height="1">
-      <use xlink:href="#metadata_image" transform="translate(0 -0.0381166) scale(0.00078125 0.00168161)" />
+      <use xlink:href="#metadata_image" transform="translate(-0.0333333) scale(0.000833333 0.0015625)" />
     </pattern>
 
     <!-- logo pattern -->

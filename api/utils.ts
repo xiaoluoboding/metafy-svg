@@ -83,23 +83,29 @@ export const transformSVG = async (options: Record<string, any>) => {
 
   <!-- Render the Title -->
   <foreignObject width="444" height="24" x="16" y="240">
-    <p class="title truncate">
-      ${metadata.title}
-    </p>
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
+      <p class="title truncate">
+        ${metadata.title}
+      </p>
+    </body>
   </foreignObject>
 
   <!-- Render the Description -->
   <foreignObject width="444" height="48" x="16" y="280">
-    <p class="desc">
-      ${metadata.description}
-    </p>
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
+      <p class="desc">
+        ${metadata.description}
+      </p>
+    </body>
   </foreignObject>
 
   <!-- Render the Author/Publisher -->
   <foreignObject width="444" height="48" x="40" y="344">
-    <p class="author truncate">
-      ${metadata.author || metadata.publisher}
-    </p>
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
+      <p class="author truncate">
+        ${metadata.author || metadata.publisher}
+      </p>
+    </body>
   </foreignObject>
 
   <!-- Render the image -->
@@ -154,5 +160,5 @@ export const transformSVG = async (options: Record<string, any>) => {
     <image id="metadata_image" width="1280" height="640" xlink:href="${imageBase64}" />
   </defs>
 </svg>
-  `
+`
 }

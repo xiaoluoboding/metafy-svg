@@ -16,10 +16,10 @@ export const transformSVG = async (options: Record<string, any>) => {
   ])
   const logoBase64 = `data:${
     logoRes.headers['content-type']
-  };base64.${logoBuffer.toString('base64')}`
+  };base64,${logoBuffer.toString('base64')}`
   const imageBase64 = `data:${
     imageRes.headers['content-type']
-  };base64.${imageBuffer.toString('base64')}`
+  };base64,${imageBuffer.toString('base64')}`
 
   return `<svg id="bookmark_style_svg" class="${className}" width="480" height="384" viewBox="0 0 480 384" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <style>

@@ -77,12 +77,12 @@ export const transformSVG = async (options: Record<string, any>) => {
   </style>
 
   <!-- Render the background with shadow -->
-  <g filter="url(#filter0_d_0_1)" class="bookmark-bg">
+  <g filter="url(#shadow_filter)" class="bookmark-bg">
     <rect width="480" height="384" rx="12" shape-rendering="crispEdges" />
   </g>
 
   <!-- Render the Title -->
-  <foreignObject width="444" height="24" x="16" y="272">
+  <foreignObject width="444" height="24" x="16" y="268">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="title truncate">
         ${metadata.title}
@@ -100,7 +100,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   </foreignObject>
 
   <!-- Render the Author/Publisher -->
-  <foreignObject width="444" height="48" x="40" y="346">
+  <foreignObject width="444" height="48" x="40" y="352">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="author truncate">
         ${metadata.author || metadata.publisher}
@@ -112,28 +112,28 @@ export const transformSVG = async (options: Record<string, any>) => {
   <path d="M0 12C0 5.37258 5.37258 0 12 0H468C474.627 0 480 5.37258 480 12V256H0V12Z" fill="url(#metadata_image_pattern)" />
 
   <!-- Render the logo -->
-  <rect x="16" y="348" width="16" height="16" fill="url(#metadata_logo_pattern)" />
+  <rect x="16" y="354" width="16" height="16" fill="url(#metadata_logo_pattern)" />
 
-  <g class="gradient-bg" filter="url(#filter0_b_0_1)">
-    <path d="M0 222H480V372C480 378.627 474.627 384 468 384H12C5.37257 384 0 378.627 0 372V222Z" fill="url(#paint0_linear_0_1)" fill-opacity="0.33" />
+  <g class="gradient-bg" filter="url(#gradient_filter)">
+    <path d="M0 256H480V372C480 378.627 476.627 384 470 384H14C7.37257 384 0 378.627 0 372V256Z" fill="url(#gradient_linear_bg)" fill-opacity="0.33" />
   </g>
 
   <defs>
     <!-- gradient background -->
-    <filter id="filter0_b_0_1" x="-4" y="218" width="488" height="170" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <filter id="gradient_filter" x="-4" y="218" width="488" height="170" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix" />
       <feGaussianBlur in="BackgroundImage" stdDeviation="2" />
       <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_0_1" />
       <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_0_1" result="shape" />
     </filter>
-    <linearGradient id="paint0_linear_0_1" x1="5.86389e-08" y1="303" x2="480" y2="303" gradientUnits="userSpaceOnUse">
+    <linearGradient id="gradient_linear_bg" x1="5.86389e-08" y1="303" x2="480" y2="303" gradientUnits="userSpaceOnUse">
       <stop stop-color="#6EE7B7" />
       <stop offset="0.5" stop-color="#3B82F6" />
       <stop offset="1" stop-color="#7C3AED" />
     </linearGradient>
 
     <!-- background shadow -->
-    <filter id="filter0_d_0_1" x="0" y="0" width="484" height="388" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <filter id="shadow_filter" x="0" y="0" width="484" height="388" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix" />
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
       <feOffset dy="2" />

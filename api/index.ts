@@ -36,6 +36,8 @@ import { VercelRequest, VercelResponse } from '@vercel/node'
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const dark = req.query.dark as string
 
+  res.setHeader('Content-Type', 'image/svg')
+  res.setHeader('Cache-Control', 's-maxage=86400') // Cache for one day.
   res.send(`<svg id="bookmark_style_svg" class="${
     dark ? 'dark' : 'light'
   }" width="480" height="384" viewBox="0 0 480 384" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

@@ -83,33 +83,29 @@ export const transformSVG = async (options: Record<string, any>) => {
 
   <!-- Render the Title -->
   <foreignObject width="444" height="24" x="16" y="240">
-    <body xmlns="http://www.w3.org/1999/xhtml">
-      <p class="title truncate">
-        ${metadata.title}
-      </p>
-    </body>
+    <p class="title truncate">
+      ${metadata.title}
+    </p>
   </foreignObject>
 
   <!-- Render the Description -->
   <foreignObject width="444" height="48" x="16" y="280">
-    <body xmlns="http://www.w3.org/1999/xhtml">
-      <p class="desc">
-        ${metadata.description}
-      </p>
-    </body>
+    <p class="desc">
+      ${metadata.description}
+    </p>
   </foreignObject>
 
   <!-- Render the Author/Publisher -->
   <foreignObject width="444" height="48" x="40" y="344">
-    <body xmlns="http://www.w3.org/1999/xhtml">
-      <p class="author truncate">
-        ${metadata.author || metadata.publisher}
-      </p>
-    </body>
+    <p class="author truncate">
+      ${metadata.author || metadata.publisher}
+    </p>
   </foreignObject>
 
+  <!-- Render the image -->
   <path d="M0 12C0 5.37259 5.37258 0 12 0H468C474.627 0 480 5.37258 480 12V223H0V12Z" fill="url(#metadata_image_pattern)" />
 
+  <!-- Render the logo -->
   <rect x="16" y="348" width="16" height="16" fill="url(#metadata_logo_pattern)" />
 
   <g class="gradient-bg" filter="url(#filter0_b_0_1)">

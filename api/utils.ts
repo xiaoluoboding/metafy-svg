@@ -8,12 +8,18 @@ export const transformSVG = async (options: Record<string, any>) => {
   const logoReq = got(metadata.logo)
   const imageReq = got(metadata.image)
 
-  const [logoBuffer, imageBuffer] = await Promise.all([
+  const [logoRes, logoBuffer, imageRes, imageBuffer] = await Promise.all([
+    logoReq,
     logoReq.buffer(),
+    imageReq,
     imageReq.buffer()
   ])
-  const logoBase64 = logoBuffer.toString('base64')
-  const imageBase64 = imageBuffer.toString('base64')
+  const logoBase64 = `data:${
+    logoRes.headers['content-type']
+  };base64.${logoBuffer.toString('base64')}`
+  const imageBase64 = `data:${
+    imageRes.headers['content-type']
+  };base64.${imageBuffer.toString('base64')}`
 
   return `<svg id="bookmark_style_svg" class="${className}" width="480" height="384" viewBox="0 0 480 384" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <style>
@@ -88,7 +94,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   <foreignObject width="444" height="48" x="16" y="280">
     <body xmlns="http://www.w3.org/1999/xhtml">
       <p class="desc">
-        ${metadata.desc}
+        ${metadata.description}
       </p>
     </body>
   </foreignObject>

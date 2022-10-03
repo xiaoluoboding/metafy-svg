@@ -1,0 +1,37 @@
+{
+	"name": "metafy-svg",
+	"version": "1.0.0",
+	"description": "Easily scrape metadata from websites as a service.",
+	"scripts": {
+		"dev": "esno api/index.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/xiaoluoboding/metafy-svg.git"
+	},
+	"keywords": [
+		"meta"
+	],
+	"author": "xiaoluoboding <xiaoluoboding@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/xiaoluoboding/metafy-svg/issues"
+	},
+	"homepage": "https://github.com/xiaoluoboding/metafy-svg#readme",
+	"dependencies": {
+		"got": "11.8.2",
+		"metascraper": "^5.31.1",
+		"metascraper-author": "^5.31.1",
+		"metascraper-clearbit": "^5.31.1",
+		"metascraper-description": "^5.31.1",
+		"metascraper-image": "^5.31.1",
+		"metascraper-logo": "^5.31.1",
+		"metascraper-logo-favicon": "^5.31.1",
+		"metascraper-title": "^5.31.1"
+	},
+	"devDependencies": {
+		"@vercel/node": "^1.15.4",
+		"esno": "^0.16.3",
+		"typescript": "^4.8.3"
+	}
+}

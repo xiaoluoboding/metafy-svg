@@ -1,4 +1,5 @@
 import got from 'got'
+import { escape } from 'html-escaper'
 
 export const transformSVG = async (options: Record<string, any>) => {
   const { url, mode, metadata } = options
@@ -85,7 +86,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   <foreignObject width="444" height="24" x="16" y="268">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="title truncate">
-        ${metadata.title}
+        ${escape(metadata.title)}
       </p>
     </body>
   </foreignObject>
@@ -94,7 +95,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   <foreignObject width="444" height="48" x="16" y="300">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="desc">
-        ${metadata.description}
+        ${escape(metadata.description)}
       </p>
     </body>
   </foreignObject>
@@ -103,7 +104,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   <foreignObject width="444" height="48" x="40" y="352">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="author truncate">
-        ${metadata.author || metadata.publisher || url}
+        ${escape(metadata.author || metadata.publisher) || url}
       </p>
     </body>
   </foreignObject>

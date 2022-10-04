@@ -1,7 +1,7 @@
 {
 	"name": "metafy-svg",
-	"version": "1.0.0",
-	"description": "Easily scrape metadata from websites as a service.",
+	"version": "0.1.0",
+	"description": "Easily scrape metadata from websites into a SVG as a service.",
 	"scripts": {
 		"dev": "esno api/index.ts"
 	},
@@ -20,6 +20,7 @@
 	"homepage": "https://github.com/xiaoluoboding/metafy-svg#readme",
 	"dependencies": {
 		"got": "11.8.2",
+		"html-escaper": "^3.0.3",
 		"metascraper": "^5.31.1",
 		"metascraper-author": "^5.31.1",
 		"metascraper-clearbit": "^5.31.1",
@@ -33,7 +34,6 @@
 		"@types/html-escaper": "^3.0.0",
 		"@vercel/node": "^1.15.4",
 		"esno": "^0.16.3",
-		"html-escaper": "^3.0.3",
 		"typescript": "^4.8.3"
 	}
 }

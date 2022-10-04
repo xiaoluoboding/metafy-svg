@@ -3,6 +3,8 @@ import got from 'got'
 
 import { transformSVG } from './utils'
 
+type AnyRecord = Record<string, any>
+
 const metascraper = require('metascraper')([
   require('metascraper-author')(),
   require('metascraper-clearbit')(),
@@ -22,7 +24,7 @@ const scrapeMetaData = async (
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const { url, mode } = req.query as Record<string, any>
+  const { url, mode, fromColor, viaColor, toColor } = req.query as AnyRecord
 
   try {
     require('url').parse(url)
@@ -37,7 +39,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Content-Type', 'image/svg+xml')
   res.setHeader('Cache-Control', 's-maxage=86400')
 
-  const svgRaw = await transformSVG({ url, mode, metadata })
+  const svgRaw = await transformSVG({
+    url,
+    mode,
+    metadata,
+    fromColor,
+    viaColor,
+    toColor
+  })
 
   res.send(svgRaw)
 }
@@ -56,6 +65,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 //       'GitHub - one-tab-group/vercel-metafy: Easily scrape metadata from websites as a service using Vercel.'
 //   }
 //   // const res = await scrapeMetaData()
-//   const res = await transformSVG({ mode: 'light', metadata })
+//   const res = await transformSVG({
+//     mode: 'light',
+//     metadata,
+//     fromColor: 'f4a',
+//     toColor: '4fa'
+//   })
 //   console.log(res)
 // })()

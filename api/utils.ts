@@ -1,8 +1,10 @@
 import got from 'got'
 import { escape } from 'html-escaper'
 
+const [defaultFrom, defaultVia, defaultTo] = ['#6EE7B7', '#3B82F6', '#7C3AED']
+
 export const transformSVG = async (options: Record<string, any>) => {
-  const { url, mode, metadata } = options
+  const { url, mode, metadata, fromColor, viaColor, toColor } = options
 
   const className = mode === 'dark' ? 'dark' : 'light'
 
@@ -26,6 +28,17 @@ export const transformSVG = async (options: Record<string, any>) => {
   const escapedDesc = metadata.description ? escape(metadata.description) : ''
   const escapedAuthor = metadata.author ? escape(metadata.author) : ''
   const escapedPublisher = metadata.publisher ? escape(metadata.publisher) : ''
+
+  const gradientFrom = fromColor ? `#${fromColor}` : defaultFrom
+  const gradientVia = viaColor ? `#${viaColor}` : defaultVia
+  const gradientTo = toColor ? `#${toColor}` : defaultTo
+
+  const linearGradientStop = viaColor
+    ? `<stop stop-color="${gradientFrom}" />
+      <stop offset="0.5" stop-color="${gradientVia}" />
+      <stop offset="1" stop-color="${gradientTo}" />`
+    : `<stop stop-color="${gradientFrom}" />
+      <stop offset="1" stop-color="${gradientTo}" />`
 
   return `<svg id="bookmark_style_svg" class="${className}" width="480" height="384" viewBox="0 0 480 384" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <style>
@@ -133,9 +146,7 @@ export const transformSVG = async (options: Record<string, any>) => {
       <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_0_1" result="shape" />
     </filter>
     <linearGradient id="gradient_linear_bg" x1="5.86389e-08" y1="303" x2="480" y2="303" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#6EE7B7" />
-      <stop offset="0.5" stop-color="#3B82F6" />
-      <stop offset="1" stop-color="#7C3AED" />
+      ${linearGradientStop}
     </linearGradient>
 
     <!-- background shadow -->
@@ -161,9 +172,7 @@ export const transformSVG = async (options: Record<string, any>) => {
     </pattern>
 
     <!-- logo base64 image -->
-    <image id="metadata_logo" width="128" height="128" xlink:href="${logoBase64}" />
     <!-- picture base64 image -->
-    <image id="metadata_image" width="1280" height="640" xlink:href="${imageBase64}" />
   </defs>
 </svg>
 `

@@ -22,6 +22,11 @@ export const transformSVG = async (options: Record<string, any>) => {
     imageRes.headers['content-type']
   };base64,${imageBuffer.toString('base64')}`
 
+  const escapedTitle = metadata.title ? escape(metadata.title) : ''
+  const escapedDesc = metadata.description ? escape(metadata.description) : ''
+  const escapedAuthor = metadata.author ? escape(metadata.author) : ''
+  const escapedPublisher = metadata.publisher ? escape(metadata.publisher) : ''
+
   return `<svg id="bookmark_style_svg" class="${className}" width="480" height="384" viewBox="0 0 480 384" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <style>
     .truncate {
@@ -86,7 +91,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   <foreignObject width="444" height="24" x="16" y="268">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="title truncate">
-        ${escape(metadata.title)}
+        ${escapedTitle}
       </p>
     </body>
   </foreignObject>
@@ -95,7 +100,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   <foreignObject width="444" height="48" x="16" y="300">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="desc">
-        ${escape(metadata.description)}
+        ${escapedDesc}
       </p>
     </body>
   </foreignObject>
@@ -104,7 +109,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   <foreignObject width="444" height="48" x="40" y="352">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="author truncate">
-        ${escape(metadata.author || metadata.publisher) || url}
+        ${escapedAuthor || escapedPublisher || url}
       </p>
     </body>
   </foreignObject>

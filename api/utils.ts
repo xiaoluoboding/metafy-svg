@@ -172,7 +172,9 @@ export const transformSVG = async (options: Record<string, any>) => {
     </pattern>
 
     <!-- logo base64 image -->
+    <image id="metadata_logo" width="128" height="128" xlink:href="${logoBase64}" />
     <!-- picture base64 image -->
+    <image id="metadata_image" width="1280" height="640" xlink:href="${imageBase64}" />
   </defs>
 </svg>
 `

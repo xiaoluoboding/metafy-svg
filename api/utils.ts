@@ -1,7 +1,7 @@
 import got from 'got'
 
 export const transformSVG = async (options: Record<string, any>) => {
-  const { mode, metadata } = options
+  const { url, mode, metadata } = options
 
   const className = mode === 'dark' ? 'dark' : 'light'
 
@@ -103,7 +103,7 @@ export const transformSVG = async (options: Record<string, any>) => {
   <foreignObject width="444" height="48" x="40" y="352">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="author truncate">
-        ${metadata.author || metadata.publisher}
+        ${metadata.author || metadata.publisher || url}
       </p>
     </body>
   </foreignObject>

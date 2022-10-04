@@ -2,7 +2,7 @@
 
 ![vercel-metafy](https://vercelbadge.vercel.app/api/xiaoluoboding/metafy-svg)
 
-> Easily scrape metadata from websites into a SVG as a service.
+> Easily crawl a website's metadata and generate an SVG as a service.
 
 ## Render In README.md
 
@@ -16,7 +16,7 @@
 ### Code
 
 ```markdown
-[![bookmark.style](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=light)](https://bookmark.style)
+[![onetab.group](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light)](https://onetab.group)
 ```
 
 ## Usage
@@ -32,12 +32,12 @@ curl https://metafy-svg.vercel.app/api?url=$URL
 ### Input
 
 ```bash
-curl https://metafy-svg.vercel.app/api?url=https://github.com/xiaoluoboding/metafy-svg
+curl https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light
 ```
 
 ### Output
 
-![Output](https://metafy-svg.vercel.app/api?url=https://github.com/xiaoluoboding/metafy-svg&mode=light)
+[![onetab.group](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light)](https://onetab.group)
 
 ## Deploy your own instance
 

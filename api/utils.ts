@@ -95,7 +95,7 @@ const stylishTwitterLikeCard = (payload: Record<string, any>) => {
   </foreignObject>
 
   <!-- Render the Author/Publisher -->
-  <foreignObject width="444" height="48" x="40" y="352">
+  <foreignObject width="444" height="24" x="40" y="352">
     <body xmlns="http://www.w3.org/1999/xhtml" style="margin: 0">
       <p class="author truncate">
         ${escapedAuthor || escapedPublisher || url}
@@ -239,7 +239,7 @@ const stylishNotionLikeCard = (payload: Record<string, any>) => {
     </foreignObject>
 
     <!-- Render the Description -->
-    <foreignObject width="432" height="32" x="16" y="48">
+    <foreignObject width="432" height="64" x="16" y="48">
       <body xmlns="http://www.w3.org/1999/xhtml"  style="margin: 0">
         <p class="desc">
           ${escapedDesc}

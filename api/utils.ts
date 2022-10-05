@@ -225,7 +225,7 @@ const stylishNotionLikeCard = (payload: Record<string, any>) => {
     </style>
 
     <!-- Render the background with shadow -->
-    <g filter="url(#filter0_d_0_1)" class="bookmark-bg">
+    <g filter="url(#shadow-filter)" class="bookmark-bg">
       <rect width="720" height="128" rx="12" shape-rendering="crispEdges" />
     </g>
 
@@ -265,6 +265,18 @@ const stylishNotionLikeCard = (payload: Record<string, any>) => {
     </g>
 
     <defs>
+      <!-- shadow filter -->
+      <filter id="shadow-filter" x="0" y="0" width="724" height="132" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="2"/>
+        <feGaussianBlur stdDeviation="1"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_11_21"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_11_21" result="shape"/>
+      </filter>
+
       <!-- picture pattern -->
       <pattern id="metadata_image_pattern" patternContentUnits="objectBoundingBox" width="1" height="1">
         <use xlink:href="#metadata_image" transform="translate(-0.00167224) scale(0.00083612 0.00167224)" />

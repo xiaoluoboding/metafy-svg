@@ -231,25 +231,27 @@ const stylishNotionLikeCard = (payload: Record<string, any>) => {
 
     <!-- Render the Title -->
     <foreignObject width="432" height="24" x="16" y="16">
-      <body xmlns="http://www.w3.org/1999/xhtml">
-      ${escapedTitle}
+      <body xmlns="http://www.w3.org/1999/xhtml"  style="margin: 0">
+        <p class="title truncate">
+          ${escapedTitle}
+        </p>
       </body>
     </foreignObject>
 
     <!-- Render the Description -->
-    <foreignObject width="432" height="48" x="16" y="48">
-      <body xmlns="http://www.w3.org/1999/xhtml">
+    <foreignObject width="432" height="32" x="16" y="48">
+      <body xmlns="http://www.w3.org/1999/xhtml"  style="margin: 0">
         <p class="desc">
-        ${escapedDesc}
+          ${escapedDesc}
         </p>
       </body>
     </foreignObject>
 
     <!-- Render the Author/Publisher -->
-    <foreignObject width="432" height="24" x="38" y="96">
-      <body xmlns="http://www.w3.org/1999/xhtml">
+    <foreignObject width="432" height="16" x="38" y="96">
+      <body xmlns="http://www.w3.org/1999/xhtml"  style="margin: 0">
         <p class="author truncate">
-        ${escapedAuthor || escapedPublisher || url}
+          ${escapedAuthor || escapedPublisher || url}
         </p>
       </body>
     </foreignObject>

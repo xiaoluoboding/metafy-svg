@@ -3,42 +3,18 @@ import { escape } from 'html-escaper'
 
 const [defaultFrom, defaultVia, defaultTo] = ['#6EE7B7', '#3B82F6', '#7C3AED']
 
-export const transformSVG = async (options: Record<string, any>) => {
-  const { url, mode, metadata, fromColor, viaColor, toColor } = options
-
-  const className = mode === 'dark' ? 'dark' : 'light'
-
-  const logoReq = got(metadata.logo)
-  const imageReq = got(metadata.image)
-
-  const [logoRes, logoBuffer, imageRes, imageBuffer] = await Promise.all([
-    logoReq,
-    logoReq.buffer(),
-    imageReq,
-    imageReq.buffer()
-  ])
-  const logoBase64 = `data:${
-    logoRes.headers['content-type']
-  };base64,${logoBuffer.toString('base64')}`
-  const imageBase64 = `data:${
-    imageRes.headers['content-type']
-  };base64,${imageBuffer.toString('base64')}`
-
-  const escapedTitle = metadata.title ? escape(metadata.title) : ''
-  const escapedDesc = metadata.description ? escape(metadata.description) : ''
-  const escapedAuthor = metadata.author ? escape(metadata.author) : ''
-  const escapedPublisher = metadata.publisher ? escape(metadata.publisher) : ''
-
-  const gradientFrom = fromColor ? `#${fromColor}` : defaultFrom
-  const gradientVia = viaColor ? `#${viaColor}` : defaultVia
-  const gradientTo = toColor ? `#${toColor}` : defaultTo
-
-  const linearGradientStop = viaColor
-    ? `<stop stop-color="${gradientFrom}" />
-      <stop offset="0.5" stop-color="${gradientVia}" />
-      <stop offset="1" stop-color="${gradientTo}" />`
-    : `<stop stop-color="${gradientFrom}" />
-      <stop offset="1" stop-color="${gradientTo}" />`
+const stylishTwitterLikeCard = (payload: Record<string, any>) => {
+  const {
+    url,
+    className,
+    escapedTitle,
+    escapedDesc,
+    escapedAuthor,
+    escapedPublisher,
+    linearGradientStop,
+    logoBase64,
+    imageBase64
+  } = payload
 
   return `<svg id="bookmark_style_svg" class="${className}" width="480" height="384" viewBox="0 0 480 384" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <style>
@@ -178,4 +154,197 @@ export const transformSVG = async (options: Record<string, any>) => {
   </defs>
 </svg>
 `
+}
+
+const stylishNotionLikeCard = (payload: Record<string, any>) => {
+  const {
+    url,
+    className,
+    escapedTitle,
+    escapedDesc,
+    escapedAuthor,
+    escapedPublisher,
+    linearGradientStop,
+    logoBase64,
+    imageBase64
+  } = payload
+
+  return `<svg id="bookmark_style_svg" class="${className}" width="720" height="128" viewBox="0 0 720 128" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <style>
+      .truncate {
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .title,
+      .desc,
+      .author {
+        color: #000000;
+        margin: 0;
+      }
+
+      .title {
+        font: bold 14px sans-serif;
+      }
+
+      .desc {
+        font: 12px sans-serif;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .author {
+        font: 12px sans-serif;
+      }
+
+      .bookmark-bg {
+        fill: rgba(255, 255, 255, .33);
+      }
+
+      .gradient-bg {
+        mix-blend-mode: darken;
+      }
+
+      .dark .bookmark-bg {
+        fill: rgba(30, 41, 59, .88);
+      }
+
+      .dark .gradient-bg {
+        mix-blend-mode: saturate;
+      }
+
+      .dark .title,
+      .dark .desc,
+      .dark .author {
+        color: #ffffff;
+      }
+    </style>
+
+    <!-- Render the background with shadow -->
+    <g filter="url(#filter0_d_0_1)" class="bookmark-bg">
+      <rect width="720" height="128" rx="12" shape-rendering="crispEdges" />
+    </g>
+
+    <!-- Render the Title -->
+    <foreignObject width="432" height="24" x="16" y="16">
+      <body xmlns="http://www.w3.org/1999/xhtml">
+      ${escapedTitle}
+      </body>
+    </foreignObject>
+
+    <!-- Render the Description -->
+    <foreignObject width="432" height="48" x="16" y="48">
+      <body xmlns="http://www.w3.org/1999/xhtml">
+        <p class="desc">
+        ${escapedDesc}
+        </p>
+      </body>
+    </foreignObject>
+
+    <!-- Render the Author/Publisher -->
+    <foreignObject width="432" height="24" x="38" y="96">
+      <body xmlns="http://www.w3.org/1999/xhtml">
+        <p class="author truncate">
+        ${escapedAuthor || escapedPublisher || url}
+        </p>
+      </body>
+    </foreignObject>
+
+    <path d="M464 0H708C714.627 0 720 5.37258 720 12V116C720 122.627 714.627 128 708 128H464V0Z" fill="url(#metadata_image_pattern)" />
+
+    <rect x="16" y="98" width="14" height="14" fill="url(#metadata_logo_pattern)" />
+
+    <g style="mix-blend-mode:hard-light">
+      <path d="M0 12C0 5.37258 5.37258 0 12 0H464V128H12C5.3726 128 0 122.627 0 116V12Z" fill="url(#gradient_linear_bg)" fill-opacity="0.33" />
+    </g>
+
+    <defs>
+      <!-- picture pattern -->
+      <pattern id="metadata_image_pattern" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#metadata_image" transform="translate(-0.00167224) scale(0.00083612 0.00167224)" />
+      </pattern>
+
+      <!-- logo pattern -->
+      <pattern id="metadata_logo_pattern" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#metadata_logo" transform="scale(0.00390625)" />
+      </pattern>
+
+      <!-- gradient background -->
+      <linearGradient id="gradient_linear_bg" x1="5.66843e-08" y1="64" x2="464" y2="64" gradientUnits="userSpaceOnUse">
+        ${linearGradientStop}
+      </linearGradient>
+
+      <!-- picture base64 image -->
+      <image id="metadata_image" width="1200" height="598" xlink:href="${imageBase64}" />
+      <!-- logo base64 image -->
+      <image id="metadata_logo" width="256" height="256" xlink:href="${logoBase64}" />
+    </defs>
+  </svg>
+`
+}
+
+export const transformSVG = async (options: Record<string, any>) => {
+  const {
+    url,
+    mode,
+    style = 'vertical',
+    metadata,
+    fromColor,
+    viaColor,
+    toColor
+  } = options
+
+  const className = mode === 'dark' ? 'dark' : 'light'
+
+  const logoReq = got(metadata.logo)
+  const imageReq = got(metadata.image)
+
+  const [logoRes, logoBuffer, imageRes, imageBuffer] = await Promise.all([
+    logoReq,
+    logoReq.buffer(),
+    imageReq,
+    imageReq.buffer()
+  ])
+  const logoBase64 = `data:${
+    logoRes.headers['content-type']
+  };base64,${logoBuffer.toString('base64')}`
+  const imageBase64 = `data:${
+    imageRes.headers['content-type']
+  };base64,${imageBuffer.toString('base64')}`
+
+  const escapedTitle = metadata.title ? escape(metadata.title) : ''
+  const escapedDesc = metadata.description ? escape(metadata.description) : ''
+  const escapedAuthor = metadata.author ? escape(metadata.author) : ''
+  const escapedPublisher = metadata.publisher ? escape(metadata.publisher) : ''
+
+  const gradientFrom = fromColor ? `#${fromColor}` : defaultFrom
+  const gradientVia = viaColor ? `#${viaColor}` : defaultVia
+  const gradientTo = toColor ? `#${toColor}` : defaultTo
+
+  const linearGradientStop = viaColor
+    ? `<stop stop-color="${gradientFrom}" />
+      <stop offset="0.5" stop-color="${gradientVia}" />
+      <stop offset="1" stop-color="${gradientTo}" />`
+    : `<stop stop-color="${gradientFrom}" />
+      <stop offset="1" stop-color="${gradientTo}" />`
+
+  const payload = {
+    url,
+    className,
+    escapedTitle,
+    escapedDesc,
+    escapedAuthor,
+    escapedPublisher,
+    linearGradientStop,
+    logoBase64,
+    imageBase64
+  }
+
+  return style === 'vertical'
+    ? stylishTwitterLikeCard(payload)
+    : stylishNotionLikeCard(payload)
 }

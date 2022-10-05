@@ -24,7 +24,8 @@ const scrapeMetaData = async (
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const { url, mode, fromColor, viaColor, toColor } = req.query as AnyRecord
+  const { url, mode, fromColor, viaColor, toColor, style } =
+    req.query as AnyRecord
 
   try {
     require('url').parse(url)
@@ -45,7 +46,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     metadata,
     fromColor,
     viaColor,
-    toColor
+    toColor,
+    style
   })
 
   res.send(svgRaw)
@@ -69,7 +71,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 //     mode: 'light',
 //     metadata,
 //     fromColor: 'f4a',
-//     toColor: '4fa'
+//     toColor: '4fa',
+//     style: 'horizontal'
 //   })
 //   console.log(res)
 // })()

@@ -8,10 +8,10 @@
 
 ### Preview
 
-|    Page Type     |                                   Light Mode                                   |                                   Dark Mode                                   |
-| :--------------: | :----------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
-|  bookmark.style  |  ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=light)  |  ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=dark)  |
-| tech-stack.tools | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=light) | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=dark) |
+|    Page Type     |                                Light/Dark Mode                                |                                       Twitter/Notion Like                                       |
+| :--------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+|  bookmark.style  | ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=light)  |  ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=dark&style=horizontal)   |
+| tech-stack.tools | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=dark) | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=light&style=horizontal) |
 
 ### Code
 

@@ -8,10 +8,46 @@
 
 ### Preview
 
-|    Page Type     |                                Light/Dark Mode                                |                                       Twitter/Notion Like                                       |
-| :--------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
-|  bookmark.style  | ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=light)  |  ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=dark&style=horizontal)   |
-| tech-stack.tools | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=dark) | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=light&style=horizontal) |
+|  Card Style  |                                           Light Mode                                            |                                           Dark Mode                                            |
+| :----------: | :---------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
+| Twitter Like |          ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=light)           |          ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=dark)           |
+| Notion Like  | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=light&style=horizontal) | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=dark&style=horizontal) |
+
+### Customize the gradient color
+
+The hex color in the URL can not contain the `#` character, so you can write like this `#000000` to `000000`
+
+#### Type
+
+```ts
+type GradidentColor = {
+  formColor: string
+  viaColor?: string
+  toColor: string
+}
+```
+
+#### URL
+
+```bash
+curl https://metafy-svg.vercel.app/api?url=$URL&formColor=$FROM_COLOR&viaColor=$VIA_COLOR&toColor=$TO_COLOR
+```
+
+#### Demo without `viaColor`
+
+```bash
+https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&toColor=a4f
+```
+
+![](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&toColor=a4f&style=horizontal)
+
+#### Demo with `viaColor`
+
+```bash
+https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&viaColor=4af&toColor=a4f
+```
+
+![](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&viaColor=4af&toColor=a4f&style=horizontal)
 
 ### Code
 
@@ -25,6 +61,19 @@ Enter a valid `$URL` as params
 
 ```bash
 curl https://metafy-svg.vercel.app/api?url=$URL
+```
+
+## Types
+
+```ts
+type Params = {
+  url: string
+  mode?: 'light' | 'dark'
+  style?: 'vertical' | 'horizontal'
+  formColor?: string
+  viaColor?: string
+  toColor?: string
+}
 ```
 
 ## Example

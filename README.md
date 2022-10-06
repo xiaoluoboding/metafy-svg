@@ -1,10 +1,18 @@
 # Metafy SVG
 
-![vercel-metafy](https://vercelbadge.vercel.app/api/xiaoluoboding/metafy-svg)
+![metafy-svg](https://vercelbadge.vercel.app/api/xiaoluoboding/metafy-svg)
 
 > Easily crawl a website's metadata and generate an SVG as a service.
 
 ## Render In README.md
+
+You can render the bookmark.style card as a SVG in the GitHub README.md now.
+
+### Code
+
+```markdown
+[![onetab.group](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light)](https://onetab.group)
+```
 
 ### Preview
 
@@ -48,12 +56,6 @@ https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=
 ```
 
 ![](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&viaColor=4af&toColor=a4f&style=horizontal)
-
-### Code
-
-```markdown
-[![onetab.group](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light)](https://onetab.group)
-```
 
 ## Usage
 

@@ -1,7 +1,7 @@
 {
 	"name": "metafy-svg",
 	"version": "0.1.2",
-	"description": "Easily crawl a website's metadata and generate an SVG as a service.",
+	"description": "Easily crawl a website's metadata and generate SVG as a service.",
 	"scripts": {
 		"dev": "esno api/index.ts"
 	},

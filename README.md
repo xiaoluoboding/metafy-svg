@@ -2,7 +2,7 @@
 
 ![metafy-svg](https://vercelbadge.vercel.app/api/xiaoluoboding/metafy-svg)
 
-> Easily crawl a website's metadata and generate an SVG as a service.
+> Easily crawl a website's metadata and generate SVG as a service.
 
 ## Render In README.md
 

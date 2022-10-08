@@ -11,15 +11,15 @@ You can render the bookmark.style card as a SVG in the GitHub README.md now.
 ### Code
 
 ```markdown
-[![onetab.group](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light)](https://onetab.group)
+[![onetab.group](https://svg.bookmark.style/api?url=https://onetab.group&mode=light)](https://onetab.group)
 ```
 
 ### Preview
 
-|  Card Style  |                                           Light Mode                                            |                                           Dark Mode                                            |
-| :----------: | :---------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
-| Twitter Like |          ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=light)           |          ![](https://metafy-svg.vercel.app/api?url=https://bookmark.style&mode=dark)           |
-| Notion Like  | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=light&style=horizontal) | ![](https://metafy-svg.vercel.app/api?url=https://tech-stack.tools&mode=dark&style=horizontal) |
+|  Card Style  |                                          Light Mode                                          |                                          Dark Mode                                          |
+| :----------: | :------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+| Twitter Like |          ![](https://svg.bookmark.style/api?url=https://bookmark.style&mode=light)           |          ![](https://svg.bookmark.style/api?url=https://bookmark.style&mode=dark)           |
+| Notion Like  | ![](https://svg.bookmark.style/api?url=https://tech-stack.tools&mode=light&style=horizontal) | ![](https://svg.bookmark.style/api?url=https://tech-stack.tools&mode=dark&style=horizontal) |
 
 ### Customize the gradient color
 
@@ -38,31 +38,31 @@ type GradidentColor = {
 #### URL
 
 ```bash
-curl https://metafy-svg.vercel.app/api?url=$URL&formColor=$FROM_COLOR&viaColor=$VIA_COLOR&toColor=$TO_COLOR
+curl https://svg.bookmark.style/api?url=$URL&formColor=$FROM_COLOR&viaColor=$VIA_COLOR&toColor=$TO_COLOR
 ```
 
 #### Demo without `viaColor`
 
 ```bash
-https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&toColor=a4f
+https://svg.bookmark.style/api?url=https://onetab.group&mode=light&fromColor=fa4&toColor=a4f
 ```
 
-![](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&toColor=a4f&style=horizontal)
+![](https://svg.bookmark.style/api?url=https://onetab.group&mode=light&fromColor=fa4&toColor=a4f&style=horizontal)
 
 #### Demo with `viaColor`
 
 ```bash
-https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&viaColor=4af&toColor=a4f
+https://svg.bookmark.style/api?url=https://onetab.group&mode=light&fromColor=fa4&viaColor=4af&toColor=a4f
 ```
 
-![](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light&fromColor=fa4&viaColor=4af&toColor=a4f&style=horizontal)
+![](https://svg.bookmark.style/api?url=https://onetab.group&mode=light&fromColor=fa4&viaColor=4af&toColor=a4f&style=horizontal)
 
 ## Usage
 
 Enter a valid `$URL` as params
 
 ```bash
-curl https://metafy-svg.vercel.app/api?url=$URL
+curl https://svg.bookmark.style/api?url=$URL
 ```
 
 ## Types
@@ -83,12 +83,12 @@ type Params = {
 ### Input
 
 ```bash
-curl https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light
+curl https://svg.bookmark.style/api?url=https://onetab.group&mode=light
 ```
 
 ### Output
 
-[![onetab.group](https://metafy-svg.vercel.app/api?url=https://onetab.group&mode=light)](https://onetab.group)
+[![onetab.group](https://svg.bookmark.style/api?url=https://onetab.group&mode=light)](https://onetab.group)
 
 ## Deploy your own instance
 
